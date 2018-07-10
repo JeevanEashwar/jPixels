@@ -15,11 +15,17 @@ class DoodleViewController: UIViewController {
     //IBOutlets
     @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var scribbleSegmentControl: UISegmentedControl!
-    
+    @IBOutlet weak var editControlsView: UIView!
+    @IBOutlet weak var allColorsView: UIView!
+    @IBOutlet weak var widthsStack: UIStackView!
+    @IBOutlet weak var editColorButton: UIButton!
     //Var & Constants
     var delegate:DoodleImageDelegate?
     var imageToBeDoodled:UIImage?
     
+    var lineColor:UIColor = UIColor.white
+    var lineWidth : CGFloat = 4
+    let colorsArray = [UIColor.white.cgColor,UIColor.lightGray.cgColor,UIColor.darkGray.cgColor,UIColor.black.cgColor, UIColor.brown.cgColor,UIColor.red.cgColor,UIColor.yellow.cgColor, UIColor.blue.cgColor,UIColor.green.cgColor]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,45 +35,70 @@ class DoodleViewController: UIViewController {
         
         let scribbleGesture = UIPanGestureRecognizer(target: self, action: #selector(handleScribblePan(recognizer:)))
         imageView.addGestureRecognizer(scribbleGesture)
+        self.initAllColorsView()
+    }
+    private func initAllColorsView(){
+        let gradient = CAGradientLayer()
+        gradient.frame = allColorsView.bounds
+        gradient.colors = colorsArray
+        gradient.startPoint = CGPoint(x:0.0, y:0.5)
+        gradient.endPoint = CGPoint(x:1.0, y:0.5)
+        gradient.locations = [0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]
+        allColorsView.layer.insertSublayer(gradient, at: 0)
+        
+        let colorsPanGesture = UIPanGestureRecognizer(target: self, action: #selector(handleColorsPan(recognizer:)))
+        allColorsView.addGestureRecognizer(colorsPanGesture)
+        
     }
     @objc func handleScribblePan(recognizer:UIPanGestureRecognizer) {
         if scribbleSegmentControl.selectedSegmentIndex == 0 {
-            imageView.drawCircleOverImage(recognizer: recognizer)
+            imageView.drawCircleOverImage(recognizer: recognizer,with: lineWidth, lineColor:lineColor)
         }else if scribbleSegmentControl.selectedSegmentIndex == 1{
-            imageView.drawRectangleOverImage(recognizer: recognizer)
+            imageView.drawRectangleOverImage(recognizer: recognizer,with: lineWidth, lineColor:lineColor)
         }else {
-            imageView.drawLineOverImage(recognizer: recognizer)
+            imageView.drawLineOverImage(recognizer: recognizer,with: lineWidth, lineColor:lineColor)
         }
         
     }
+    @objc func handleColorsPan(recognizer:UIPanGestureRecognizer) {
+        guard let cView = recognizer.view else {return}
+        let location = recognizer.location(in: cView)
+        let indexOfColor = Int(floor(location.x / cView.frame.width * 10))
+        if indexOfColor > 0 && indexOfColor < colorsArray.count {
+            lineColor = UIColor(cgColor: colorsArray[indexOfColor])
+            editColorButton.backgroundColor = lineColor
+        }
+    }
+
     @IBAction func cancel(_ sender : Any) {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func done(_ sender : Any) {
+        //remove close buttons of Doodle subViews
+        for subView in imageView.subviews {
+            if let closeButtonView = subView.subviews.last {
+                closeButtonView.removeFromSuperview()
+            }
+        }
         //take screenshot and update source VC
         let doodledImage = imageView.snapshot(of: imageView.frame)
         delegate?.imageDoodled(doodledImage)
         dismiss(animated: true, completion: nil)
     }
+    @IBAction func chooseColorClicked(_ sender: Any) {
+        allColorsView.isHidden = !allColorsView.isHidden
+    }
+    @IBAction func chooseLineWidthClicked(_ sender: Any) {
+        widthsStack.isHidden = !widthsStack.isHidden
+    }
+    @IBAction func widthButtonClicked(_ sender: UIButton) {
+        widthsStack.isHidden = true
+        lineWidth = CGFloat(sender.tag * 2)
+    }
 }
 //Doodle methods
 extension UIImageView {
-    func drawLineFromPoint(start : CGPoint, toPoint end:CGPoint, ofColor lineColor: UIColor, inView view:UIView) {
-        
-        //design the path
-        let path = UIBezierPath()
-        path.move(to: start)
-        path.addLine(to: end)
-        
-        //design path in layer
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = lineColor.cgColor
-        shapeLayer.lineWidth = 1.0
-        
-        view.layer.addSublayer(shapeLayer)
-    }
-    func drawLineOverImage(recognizer:UIPanGestureRecognizer) {
+    func drawLineOverImage(recognizer:UIPanGestureRecognizer,with lineWidth:CGFloat, lineColor : UIColor) {
         let translation = recognizer.translation(in: self)
         var beganOrigin = CGPoint(x: 0, y: 0)
         if recognizer.state == .changed {
@@ -96,15 +127,15 @@ extension UIImageView {
             //design path in layer
             let shapeLayer = CAShapeLayer()
             shapeLayer.path = linePath.cgPath
-            shapeLayer.strokeColor = UIColor.white.cgColor
-            shapeLayer.lineWidth = 4.0
+            shapeLayer.strokeColor = lineColor.cgColor
+            shapeLayer.lineWidth = lineWidth
             self.layer.addSublayer(shapeLayer)
             
         }
         
     }
     
-    func drawCircleOverImage(recognizer:UIPanGestureRecognizer) {
+    func drawCircleOverImage(recognizer:UIPanGestureRecognizer,with lineWidth:CGFloat, lineColor : UIColor) {
         var origin : CGPoint = CGPoint(x: 0, y: 0)
         let translation = recognizer.translation(in: self)
         let width = abs(translation.x)
@@ -140,14 +171,22 @@ extension UIImageView {
             let shapeLayer = CAShapeLayer()
             shapeLayer.path = ellipsePath.cgPath
             shapeLayer.fillColor = UIColor.clear.cgColor
-            shapeLayer.strokeColor = UIColor.white.cgColor
-            shapeLayer.lineWidth = 4.0
+            shapeLayer.strokeColor = lineColor.cgColor
+            shapeLayer.lineWidth = lineWidth
             circleView.layer.addSublayer(shapeLayer)
+            //add close button
+            let closeButton = UIButton(frame: CGRect(x: circleView.frame.width - 20, y: 0, width: 20, height: 20))
+            closeButton.setImage(UIImage(named: "close"), for: .normal)
+            closeButton.addTarget(self, action: #selector(self.closeSelf(sender:)), for: .touchUpInside)
+            circleView.addSubview(closeButton)
             self.addSubview(circleView)
         }
         
     }
-    func drawRectangleOverImage(recognizer:UIPanGestureRecognizer) {
+    @objc func closeSelf(sender: UIButton) {
+        sender.superview?.removeFromSuperview()
+    }
+    func drawRectangleOverImage(recognizer:UIPanGestureRecognizer,with lineWidth:CGFloat, lineColor : UIColor) {
         var origin : CGPoint = CGPoint(x: 0, y: 0)
         let translation = recognizer.translation(in: self)
         let width = abs(translation.x)
@@ -183,9 +222,14 @@ extension UIImageView {
             let shapeLayer = CAShapeLayer()
             shapeLayer.path = rectangleViewPath.cgPath
             shapeLayer.fillColor = UIColor.clear.cgColor
-            shapeLayer.strokeColor = UIColor.white.cgColor
-            shapeLayer.lineWidth = 4.0
+            shapeLayer.strokeColor = lineColor.cgColor
+            shapeLayer.lineWidth = lineWidth
             rectangleView.layer.addSublayer(shapeLayer)
+            //add close button
+            let closeButton = UIButton(frame: CGRect(x: rectangleView.frame.width - 20, y: 0, width: 20, height: 20))
+            closeButton.setImage(UIImage(named: "close"), for: .normal)
+            closeButton.addTarget(self, action: #selector(self.closeSelf(sender:)), for: .touchUpInside)
+            rectangleView.addSubview(closeButton)
             self.addSubview(rectangleView)
         }
         

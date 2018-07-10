@@ -647,27 +647,123 @@
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Azj-Na-t9H">
                                 <rect key="frame" x="0.0" y="78" width="375" height="589"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5RT-wC-Qfw">
+                                <rect key="frame" x="0.0" y="463" width="375" height="204"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="wzJ-d7-D6d">
+                                        <rect key="frame" x="127.5" y="140" width="120" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6e-Uq-Alm">
+                                                <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                                <state key="normal" image="pencil"/>
+                                                <connections>
+                                                    <action selector="chooseColorClicked:" destination="UfC-E4-bf0" eventType="touchUpInside" id="3QP-HW-fFj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLs-mI-btp">
+                                                <rect key="frame" x="76" y="0.0" width="44" height="44"/>
+                                                <state key="normal" image="lineWidth"/>
+                                                <connections>
+                                                    <action selector="chooseLineWidthClicked:" destination="UfC-E4-bf0" eventType="touchUpInside" id="BIg-MR-u2W"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="5lL-wg-uXJ"/>
+                                            <constraint firstAttribute="height" constant="44" id="vLm-vm-mCS"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ1-YH-I56">
+                                        <rect key="frame" x="16" y="110" width="343" height="14"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="THg-gC-QbH"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="iRP-rS-GsY">
+                                        <rect key="frame" x="117.5" y="20" width="140" height="74"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqh-fY-8kT">
+                                                <rect key="frame" x="0.0" y="0.0" width="140" height="22"/>
+                                                <state key="normal" image="lineWidth1"/>
+                                                <state key="selected">
+                                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="widthButtonClicked:" destination="UfC-E4-bf0" eventType="touchUpInside" id="Oxv-gR-KQD"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fM-95-Ziv">
+                                                <rect key="frame" x="0.0" y="26" width="140" height="22"/>
+                                                <state key="normal" image="lineWidth2"/>
+                                                <state key="selected">
+                                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="widthButtonClicked:" destination="UfC-E4-bf0" eventType="touchUpInside" id="2OU-c7-Y4H"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lix-yq-EP5">
+                                                <rect key="frame" x="0.0" y="52" width="140" height="22"/>
+                                                <state key="normal" image="lineWidth3"/>
+                                                <state key="selected">
+                                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="widthButtonClicked:" destination="UfC-E4-bf0" eventType="touchUpInside" id="7Te-rY-CGd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="HWn-lB-wcA"/>
+                                            <constraint firstAttribute="height" constant="74" id="qkT-xE-c4Z"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="iRP-rS-GsY" firstAttribute="centerX" secondItem="5RT-wC-Qfw" secondAttribute="centerX" id="0yw-Cg-2b1"/>
+                                    <constraint firstItem="ZZ1-YH-I56" firstAttribute="top" secondItem="iRP-rS-GsY" secondAttribute="bottom" constant="16" id="6Yj-9f-hvh"/>
+                                    <constraint firstAttribute="bottom" secondItem="wzJ-d7-D6d" secondAttribute="bottom" constant="20" id="CpG-vO-WoS"/>
+                                    <constraint firstItem="ZZ1-YH-I56" firstAttribute="leading" secondItem="5RT-wC-Qfw" secondAttribute="leading" constant="16" id="ULG-zF-Doh"/>
+                                    <constraint firstAttribute="height" constant="204" id="VPZ-yv-0d2"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZZ1-YH-I56" secondAttribute="trailing" constant="16" id="YAi-bp-S4e"/>
+                                    <constraint firstItem="wzJ-d7-D6d" firstAttribute="top" secondItem="ZZ1-YH-I56" secondAttribute="bottom" constant="16" id="ewK-2a-Kfv"/>
+                                    <constraint firstItem="wzJ-d7-D6d" firstAttribute="centerX" secondItem="5RT-wC-Qfw" secondAttribute="centerX" id="id4-Vx-upA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="5RT-wC-Qfw" secondAttribute="bottom" id="1Iw-u6-73e"/>
                             <constraint firstItem="S2L-sJ-L78" firstAttribute="top" secondItem="gav-3C-YZ2" secondAttribute="top" id="BOT-pm-yjy"/>
                             <constraint firstItem="Azj-Na-t9H" firstAttribute="leading" secondItem="gav-3C-YZ2" secondAttribute="leading" id="DZg-lv-JR5"/>
                             <constraint firstItem="S2L-sJ-L78" firstAttribute="trailing" secondItem="gav-3C-YZ2" secondAttribute="trailing" id="Hmv-mc-37A"/>
+                            <constraint firstItem="5RT-wC-Qfw" firstAttribute="leading" secondItem="iUb-AA-zLo" secondAttribute="leading" id="KSA-JW-GfO"/>
                             <constraint firstItem="Azj-Na-t9H" firstAttribute="trailing" secondItem="gav-3C-YZ2" secondAttribute="trailing" id="RzZ-FE-Dsf"/>
                             <constraint firstItem="Azj-Na-t9H" firstAttribute="top" secondItem="S2L-sJ-L78" secondAttribute="bottom" constant="8" id="YHQ-tM-73F"/>
                             <constraint firstItem="Azj-Na-t9H" firstAttribute="bottom" secondItem="gav-3C-YZ2" secondAttribute="bottom" id="mj5-gz-Ogx"/>
                             <constraint firstItem="S2L-sJ-L78" firstAttribute="leading" secondItem="gav-3C-YZ2" secondAttribute="leading" id="oM3-xW-dXl"/>
+                            <constraint firstAttribute="trailing" secondItem="5RT-wC-Qfw" secondAttribute="trailing" id="pn7-n1-yzp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gav-3C-YZ2"/>
                     </view>
                     <connections>
+                        <outlet property="allColorsView" destination="ZZ1-YH-I56" id="gHf-v8-KQr"/>
+                        <outlet property="editColorButton" destination="b6e-Uq-Alm" id="zdc-oZ-7Up"/>
+                        <outlet property="editControlsView" destination="5RT-wC-Qfw" id="S66-T9-eSL"/>
                         <outlet property="imageView" destination="Azj-Na-t9H" id="B3U-9W-MZb"/>
                         <outlet property="scribbleSegmentControl" destination="Xhn-3E-nGQ" id="dpY-1h-4Hx"/>
+                        <outlet property="widthsStack" destination="iRP-rS-GsY" id="vMP-Mf-xVN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2US-wy-vw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2228" y="613"/>
+            <point key="canvasLocation" x="2228" y="612.14392803598207"/>
         </scene>
         <!--Preview View Controller-->
         <scene sceneID="gpG-6g-qsn">
@@ -723,6 +819,11 @@
         <image name="circle" width="512" height="512"/>
         <image name="cropIcon" width="2000" height="2000"/>
         <image name="line" width="176" height="170"/>
+        <image name="lineWidth" width="225" height="221"/>
+        <image name="lineWidth1" width="100" height="2"/>
+        <image name="lineWidth2" width="120" height="4"/>
+        <image name="lineWidth3" width="140" height="6"/>
+        <image name="pencil" width="1600" height="1600"/>
         <image name="rectangle" width="512" height="512"/>
         <image name="scribble" width="80" height="80"/>
     </resources>
