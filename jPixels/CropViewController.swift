@@ -25,15 +25,23 @@ class CropViewController: UIViewController {
     @IBOutlet var leftView:UIView!
     @IBOutlet var bottomView:UIView!
     
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
+    
     //var & constants
     var imageToBeCropped : UIImage?
     var delegate:ImageCropDelegate?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.imageView.image = imageToBeCropped
         addCropView()
+        appDelegate.addShadow(inputView: doneButton)
+        appDelegate.addShadow(inputView: cancelButton)
+        appDelegate.addShadow(inputView: imageView)
     }
     private func addCropView(){
         cropIndicatorView.frame = CGRect(x: 0, y: 0, width: imageView.frame.width/2, height: imageView.frame.height/2)
@@ -87,8 +95,8 @@ class CropViewController: UIViewController {
     @IBAction func done(_ sender : Any) {
         //take screenshot and update source VC
         cropIndicatorView.removeFromSuperview()
-        let translatedRect = self.imageView.convert(cropIndicatorView.frame, to: self.view)
-        let croppedImage = self.view.snapshot(of: translatedRect)
+        let translatedRect = self.imageView.convert(cropIndicatorView.frame, to: self.imageView)
+        let croppedImage = self.imageView.snapshot(of: translatedRect)
         delegate?.imageCropped(croppedImage)
         dismiss(animated: true, completion: nil)
         

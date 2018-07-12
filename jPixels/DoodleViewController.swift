@@ -25,7 +25,8 @@ class DoodleViewController: UIViewController {
     
     var lineColor:UIColor = UIColor.white
     var lineWidth : CGFloat = 4
-    let colorsArray = [UIColor.white.cgColor,UIColor.lightGray.cgColor,UIColor.darkGray.cgColor,UIColor.black.cgColor, UIColor.brown.cgColor,UIColor.red.cgColor,UIColor.yellow.cgColor, UIColor.blue.cgColor,UIColor.green.cgColor]
+    var previousLocation : CGPoint = CGPoint()
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,14 +41,16 @@ class DoodleViewController: UIViewController {
     private func initAllColorsView(){
         let gradient = CAGradientLayer()
         gradient.frame = allColorsView.bounds
-        gradient.colors = colorsArray
+        gradient.colors = appDelegate.getColorFromArray()
         gradient.startPoint = CGPoint(x:0.0, y:0.5)
         gradient.endPoint = CGPoint(x:1.0, y:0.5)
         gradient.locations = [0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]
         allColorsView.layer.insertSublayer(gradient, at: 0)
         
         let colorsPanGesture = UIPanGestureRecognizer(target: self, action: #selector(handleColorsPan(recognizer:)))
+        let colorsTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleColorsTap(recognizer:)))
         allColorsView.addGestureRecognizer(colorsPanGesture)
+        allColorsView.addGestureRecognizer(colorsTapGesture)
         
     }
     @objc func handleScribblePan(recognizer:UIPanGestureRecognizer) {
@@ -55,8 +58,11 @@ class DoodleViewController: UIViewController {
             imageView.drawCircleOverImage(recognizer: recognizer,with: lineWidth, lineColor:lineColor)
         }else if scribbleSegmentControl.selectedSegmentIndex == 1{
             imageView.drawRectangleOverImage(recognizer: recognizer,with: lineWidth, lineColor:lineColor)
-        }else {
+        }else if scribbleSegmentControl.selectedSegmentIndex == 2{
             imageView.drawLineOverImage(recognizer: recognizer,with: lineWidth, lineColor:lineColor)
+        }else {
+            imageView.drawFreeHand(recognizer: recognizer, previousLocation: previousLocation, with: lineWidth, lineColor: lineColor)
+            previousLocation = recognizer.location(in: imageView)
         }
         
     }
@@ -64,12 +70,22 @@ class DoodleViewController: UIViewController {
         guard let cView = recognizer.view else {return}
         let location = recognizer.location(in: cView)
         let indexOfColor = Int(floor(location.x / cView.frame.width * 10))
+        let colorsArray = appDelegate.getColorFromArray()
         if indexOfColor > 0 && indexOfColor < colorsArray.count {
             lineColor = UIColor(cgColor: colorsArray[indexOfColor])
             editColorButton.backgroundColor = lineColor
         }
     }
-
+    @objc func handleColorsTap(recognizer:UITapGestureRecognizer) {
+        guard let cView = recognizer.view else {return}
+        let location = recognizer.location(in: cView)
+        let indexOfColor = Int(floor(location.x / cView.frame.width * 10))
+        let colorsArray = appDelegate.getColorFromArray()
+        if indexOfColor > 0 && indexOfColor < colorsArray.count {
+            lineColor = UIColor(cgColor: colorsArray[indexOfColor])
+            editColorButton.backgroundColor = lineColor
+        }
+    }
     @IBAction func cancel(_ sender : Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -233,6 +249,21 @@ extension UIImageView {
             self.addSubview(rectangleView)
         }
         
+    }
+    func drawFreeHand(recognizer:UIPanGestureRecognizer,previousLocation:CGPoint,with lineWidth:CGFloat, lineColor : UIColor) {
+        if recognizer.state == .began {
+            //draw location to translation
+        }else{
+            //draw prevLocation to current location
+            let linePath = UIBezierPath()
+            linePath.move(to: previousLocation)
+            linePath.addLine(to: recognizer.location(in: self))
+            let lineShape = CAShapeLayer()
+            lineShape.strokeColor = lineColor.cgColor
+            lineShape.lineWidth = lineWidth
+            lineShape.path = linePath.cgPath
+            self.layer.addSublayer(lineShape)
+        }
     }
     
 }

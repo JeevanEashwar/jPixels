@@ -40,14 +40,23 @@ extension UIView {
 class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     @IBOutlet var imageView: UIImageView!
 
+    @IBOutlet weak var uploadButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var previewButton: UIButton!
     
     let imagePicker = UIImagePickerController()
     var originalImage = UIImage(named: "bg")
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         imagePicker.delegate = self
+        appDelegate.addShadow(inputView: imageView)
+        appDelegate.addShadow(inputView: resetButton)
+        appDelegate.addShadow(inputView: previewButton)
+        appDelegate.addShadow(inputView: uploadButton)
     }
+    
     // MARK: - UIImagePickerControllerDelegate Methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {

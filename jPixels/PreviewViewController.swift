@@ -10,12 +10,16 @@ import UIKit
 
 class PreviewViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var closeButton: UIButton!
     var previewImage:UIImage?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         imageView.image = previewImage ?? UIImage(named: "bg")!
+        appDelegate.addShadow(inputView: imageView)
+        appDelegate.addShadow(inputView: closeButton)
     }
     
     @IBAction func close(_ sender: Any) {

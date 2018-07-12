@@ -12,8 +12,20 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    let colorFloatsArray: [(CGFloat, CGFloat, CGFloat)] = [
+        (0, 0, 0),
+        (105.0 / 255.0, 105.0 / 255.0, 105.0 / 255.0),
+        (1.0, 0, 0),
+        (0, 0, 1.0),
+        (51.0 / 255.0, 204.0 / 255.0, 1.0),
+        (102.0 / 255.0, 204.0 / 255.0, 0),
+        (102.0 / 255.0, 1.0, 0),
+        (160.0 / 255.0, 82.0 / 255.0, 45.0 / 255.0),
+        (1.0, 102.0 / 255.0, 0),
+        (1.0, 1.0, 0),
+        (1.0, 1.0, 1.0),
+        ]
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
@@ -40,7 +52,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    func getColorFromArray() -> [CGColor] {
+        var colorsArray = [CGColor]()
+        for index in 0 ..< colorFloatsArray.count {
+            let colorFloats = colorFloatsArray[index]
+            let color = UIColor.init(red: colorFloats.0, green: colorFloats.1, blue: colorFloats.2, alpha: 1.0)
+            colorsArray.append(color.cgColor)
+        }
+        return colorsArray
+    }
+    func addShadow(inputView:UIView){
+        let shadowPath = UIBezierPath(rect: CGRect(x: 0,
+                                                   y: 0,
+                                                   width: inputView.frame.size.width,
+                                                   height: inputView.frame.size.height))
+        inputView.layer.masksToBounds = false
+        inputView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        inputView.layer.shadowOpacity = 0.6
+        inputView.layer.shadowPath = shadowPath.cgPath
+        inputView.layer.shadowColor = UIColor.darkGray.cgColor
+        inputView.layer.shadowRadius = 4
+        inputView.layer.cornerRadius = 4
+    }
 
 }
 

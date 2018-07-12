@@ -16,8 +16,50 @@
 		09711E9F20EFD1F1006B7915 /* CropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09711E9E20EFD1F1006B7915 /* CropView.swift */; };
 		0984D5C520F4808B006D4D2C /* CropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984D5C420F4808B006D4D2C /* CropViewController.swift */; };
 		0984D5C720F495D3006D4D2C /* DoodleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984D5C620F495D3006D4D2C /* DoodleViewController.swift */; };
+		0984D5CF20F62DEE006D4D2C /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0984D5CE20F62DEE006D4D2C /* PhotosUI.framework */; };
+		0984D5D120F62DEE006D4D2C /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0984D5D020F62DEE006D4D2C /* Photos.framework */; };
+		0984D5D420F62DEE006D4D2C /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984D5D320F62DEE006D4D2C /* PhotoEditingViewController.swift */; };
+		0984D5D720F62DEE006D4D2C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0984D5D520F62DEE006D4D2C /* MainInterface.storyboard */; };
+		0984D5DB20F62DEE006D4D2C /* photoExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0984D5CC20F62DEE006D4D2C /* photoExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0984D5E520F630EB006D4D2C /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0984D5CE20F62DEE006D4D2C /* PhotosUI.framework */; };
+		0984D5E620F630EB006D4D2C /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0984D5D020F62DEE006D4D2C /* Photos.framework */; };
+		0984D5E920F630EB006D4D2C /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984D5E820F630EB006D4D2C /* PhotoEditingViewController.swift */; };
+		0984D5EC20F630EB006D4D2C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0984D5EA20F630EB006D4D2C /* MainInterface.storyboard */; };
+		0984D5F020F630EB006D4D2C /* photoEx.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0984D5E420F630EB006D4D2C /* photoEx.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		09F175B720F35CFF0063D301 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F175B620F35CFF0063D301 /* PreviewViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0984D5D920F62DEE006D4D2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09711E7F20EFA141006B7915 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0984D5CB20F62DEE006D4D2C;
+			remoteInfo = photoExtension;
+		};
+		0984D5EE20F630EB006D4D2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09711E7F20EFA141006B7915 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0984D5E320F630EB006D4D2C;
+			remoteInfo = photoEx;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0984D5DF20F62DEE006D4D2C /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0984D5F020F630EB006D4D2C /* photoEx.appex in Embed App Extensions */,
+				0984D5DB20F62DEE006D4D2C /* photoExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		09711E8720EFA141006B7915 /* jPixels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jPixels.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,6 +73,16 @@
 		09711E9E20EFD1F1006B7915 /* CropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropView.swift; sourceTree = "<group>"; };
 		0984D5C420F4808B006D4D2C /* CropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropViewController.swift; sourceTree = "<group>"; };
 		0984D5C620F495D3006D4D2C /* DoodleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleViewController.swift; sourceTree = "<group>"; };
+		0984D5CC20F62DEE006D4D2C /* photoExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = photoExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0984D5CE20F62DEE006D4D2C /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		0984D5D020F62DEE006D4D2C /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		0984D5D320F62DEE006D4D2C /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
+		0984D5D620F62DEE006D4D2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		0984D5D820F62DEE006D4D2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0984D5E420F630EB006D4D2C /* photoEx.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = photoEx.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0984D5E820F630EB006D4D2C /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
+		0984D5EB20F630EB006D4D2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		0984D5ED20F630EB006D4D2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09F175B620F35CFF0063D301 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -42,6 +94,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0984D5C920F62DEE006D4D2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0984D5CF20F62DEE006D4D2C /* PhotosUI.framework in Frameworks */,
+				0984D5D120F62DEE006D4D2C /* Photos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0984D5E120F630EB006D4D2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0984D5E520F630EB006D4D2C /* PhotosUI.framework in Frameworks */,
+				0984D5E620F630EB006D4D2C /* Photos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -49,6 +119,9 @@
 			isa = PBXGroup;
 			children = (
 				09711E8920EFA141006B7915 /* jPixels */,
+				0984D5D220F62DEE006D4D2C /* photoExtension */,
+				0984D5E720F630EB006D4D2C /* photoEx */,
+				0984D5CD20F62DEE006D4D2C /* Frameworks */,
 				09711E8820EFA141006B7915 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				09711E8720EFA141006B7915 /* jPixels.app */,
+				0984D5CC20F62DEE006D4D2C /* photoExtension.appex */,
+				0984D5E420F630EB006D4D2C /* photoEx.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -79,6 +154,35 @@
 			path = jPixels;
 			sourceTree = "<group>";
 		};
+		0984D5CD20F62DEE006D4D2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0984D5CE20F62DEE006D4D2C /* PhotosUI.framework */,
+				0984D5D020F62DEE006D4D2C /* Photos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0984D5D220F62DEE006D4D2C /* photoExtension */ = {
+			isa = PBXGroup;
+			children = (
+				0984D5D320F62DEE006D4D2C /* PhotoEditingViewController.swift */,
+				0984D5D520F62DEE006D4D2C /* MainInterface.storyboard */,
+				0984D5D820F62DEE006D4D2C /* Info.plist */,
+			);
+			path = photoExtension;
+			sourceTree = "<group>";
+		};
+		0984D5E720F630EB006D4D2C /* photoEx */ = {
+			isa = PBXGroup;
+			children = (
+				0984D5E820F630EB006D4D2C /* PhotoEditingViewController.swift */,
+				0984D5EA20F630EB006D4D2C /* MainInterface.storyboard */,
+				0984D5ED20F630EB006D4D2C /* Info.plist */,
+			);
+			path = photoEx;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,15 +193,52 @@
 				09711E8320EFA141006B7915 /* Sources */,
 				09711E8420EFA141006B7915 /* Frameworks */,
 				09711E8520EFA141006B7915 /* Resources */,
+				0984D5DF20F62DEE006D4D2C /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0984D5DA20F62DEE006D4D2C /* PBXTargetDependency */,
+				0984D5EF20F630EB006D4D2C /* PBXTargetDependency */,
 			);
 			name = jPixels;
 			productName = jPixels;
 			productReference = 09711E8720EFA141006B7915 /* jPixels.app */;
 			productType = "com.apple.product-type.application";
+		};
+		0984D5CB20F62DEE006D4D2C /* photoExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0984D5DE20F62DEE006D4D2C /* Build configuration list for PBXNativeTarget "photoExtension" */;
+			buildPhases = (
+				0984D5C820F62DEE006D4D2C /* Sources */,
+				0984D5C920F62DEE006D4D2C /* Frameworks */,
+				0984D5CA20F62DEE006D4D2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = photoExtension;
+			productName = photoExtension;
+			productReference = 0984D5CC20F62DEE006D4D2C /* photoExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		0984D5E320F630EB006D4D2C /* photoEx */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0984D5F120F630EB006D4D2C /* Build configuration list for PBXNativeTarget "photoEx" */;
+			buildPhases = (
+				0984D5E020F630EB006D4D2C /* Sources */,
+				0984D5E120F630EB006D4D2C /* Frameworks */,
+				0984D5E220F630EB006D4D2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = photoEx;
+			productName = photoEx;
+			productReference = 0984D5E420F630EB006D4D2C /* photoEx.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -110,6 +251,12 @@
 				ORGANIZATIONNAME = Jeevan;
 				TargetAttributes = {
 					09711E8620EFA141006B7915 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					0984D5CB20F62DEE006D4D2C = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					0984D5E320F630EB006D4D2C = {
 						CreatedOnToolsVersion = 10.0;
 					};
 				};
@@ -128,6 +275,8 @@
 			projectRoot = "";
 			targets = (
 				09711E8620EFA141006B7915 /* jPixels */,
+				0984D5CB20F62DEE006D4D2C /* photoExtension */,
+				0984D5E320F630EB006D4D2C /* photoEx */,
 			);
 		};
 /* End PBXProject section */
@@ -141,6 +290,22 @@
 				09711E9220EFA143006B7915 /* Assets.xcassets in Resources */,
 				09711E9D20EFCBC1006B7915 /* bg.jpg in Resources */,
 				09711E9020EFA142006B7915 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0984D5CA20F62DEE006D4D2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0984D5D720F62DEE006D4D2C /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0984D5E220F630EB006D4D2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0984D5EC20F630EB006D4D2C /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,7 +325,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0984D5C820F62DEE006D4D2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0984D5D420F62DEE006D4D2C /* PhotoEditingViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0984D5E020F630EB006D4D2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0984D5E920F630EB006D4D2C /* PhotoEditingViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0984D5DA20F62DEE006D4D2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0984D5CB20F62DEE006D4D2C /* photoExtension */;
+			targetProxy = 0984D5D920F62DEE006D4D2C /* PBXContainerItemProxy */;
+		};
+		0984D5EF20F630EB006D4D2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0984D5E320F630EB006D4D2C /* photoEx */;
+			targetProxy = 0984D5EE20F630EB006D4D2C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		09711E8E20EFA142006B7915 /* Main.storyboard */ = {
@@ -177,6 +371,22 @@
 				09711E9420EFA143006B7915 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		0984D5D520F62DEE006D4D2C /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0984D5D620F62DEE006D4D2C /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		0984D5EA20F630EB006D4D2C /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0984D5EB20F630EB006D4D2C /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -299,6 +509,7 @@
 		09711E9A20EFA143006B7915 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = jPixels/Info.plist;
@@ -316,6 +527,7 @@
 		09711E9B20EFA143006B7915 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = jPixels/Info.plist;
@@ -325,6 +537,78 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = personal.jPixels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0984D5DC20F62DEE006D4D2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = photoExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = personal.jPixels.photoExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0984D5DD20F62DEE006D4D2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = photoExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = personal.jPixels.photoExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0984D5F220F630EB006D4D2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = photoEx/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = personal.jPixels.photoEx;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0984D5F320F630EB006D4D2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = photoEx/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = personal.jPixels.photoEx;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -347,6 +631,24 @@
 			buildConfigurations = (
 				09711E9A20EFA143006B7915 /* Debug */,
 				09711E9B20EFA143006B7915 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0984D5DE20F62DEE006D4D2C /* Build configuration list for PBXNativeTarget "photoExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0984D5DC20F62DEE006D4D2C /* Debug */,
+				0984D5DD20F62DEE006D4D2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0984D5F120F630EB006D4D2C /* Build configuration list for PBXNativeTarget "photoEx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0984D5F220F630EB006D4D2C /* Debug */,
+				0984D5F320F630EB006D4D2C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
